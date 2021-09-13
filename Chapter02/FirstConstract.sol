@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0 <0.9.0;
 
-contract FirstConstract{
+contract FirstContract{
     enum State { Created, Locked, Inactive}
     State public state;
     Person[] public people;
