@@ -1,5 +1,6 @@
 pragma solidity >=0.7.0 <0.9.0;
 contract Ballot {
+    
     struct Voter {
         uint weight;
         bool voted;
@@ -18,6 +19,10 @@ contract Ballot {
 
     Proposal[] public proposals;
 
+    // 0. alice 0x616c696365000000000000000000000000000000000000000000000000000000
+    // 1. bob   0x626f620000000000000000000000000000000000000000000000000000000000
+    // 2. luc   0x6c75630000000000000000000000000000000000000000000000000000000000
+
     constructor(bytes32[] memory proposalNames) {
         chairperson = msg.sender;
         voters[chairperson].weight = 1;
@@ -33,7 +38,7 @@ contract Ballot {
     function giveRightToVote(address voter) external {
         require( msg.sender == chairperson, "Only chairperson can give right to vote." );
         require( !voters[voter].voted, "The voter already voted." );
-        require(voters[voter].weight == 0);
+        require( voters[voter].weight == 0 );
         voters[voter].weight = 1;
     }
 
